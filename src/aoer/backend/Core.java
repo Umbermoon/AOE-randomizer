@@ -34,4 +34,20 @@ public class Core {
 	public void randomizeCivs() {
 		CivRandomizer.randomizeCivs(playerList, civMap, allowRepeats);
 	}
+	
+	public void allowRepeats(boolean b) {
+		allowRepeats = b;
+	}
+	
+	public DLC[] getAllowedDLC() {
+		return allowedDLC;
+	}
+	
+	public Civs[] getAllowedCivs() {
+		return allowedCivs;
+	}
+	
+	public CivMap getCivMap() {
+		return civMap;
+	}
 }
