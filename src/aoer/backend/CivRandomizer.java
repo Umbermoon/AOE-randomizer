@@ -1,19 +1,17 @@
 package aoer.backend;
 import java.util.Random;
-import java.util.Set;
 
 import aoer.information.Civs;
 
 public class CivRandomizer {
 	
-	public static void randomizeCivs(PlayerMap pMap, CivMap cMap, boolean allowedRepeats) {
+	public static void randomizeCivs(Player[] pList, CivMap cMap, boolean allowedRepeats) {
 		Random rand = new Random();
 		Civs[] enabledCivs = cMap.getEnabledCivs();
-		Set<Player> playerList = pMap.getPlayerList();
 		int randomIndex = 0;
-		for(Player p : playerList) {
+		for(Player p : pList) {
 			randomIndex = rand.nextInt(enabledCivs.length);
-			pMap.setPlayerCiv(p, enabledCivs[randomIndex]);
+			p.setAssignedCiv(enabledCivs[randomIndex]);
 			if(!allowedRepeats)
 				enabledCivs = removeCiv(enabledCivs, enabledCivs[randomIndex]);
 		}

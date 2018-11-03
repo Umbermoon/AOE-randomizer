@@ -6,19 +6,19 @@ import aoer.information.*;
 public class Core {
 	private DLC[] allowedDLC;
 	private Civs[] allowedCivs;
-	private PlayerMap playerMap;
+	private Player[] playerList;
 	private CivMap civMap;
 	private boolean allowRepeats;
 	
 	public Core() {
 		setAllowedDLC(DLC.getAllDLC());
 		civMap = new CivMap(allowedCivs);
-		playerMap = new PlayerMap();
+		playerList = null;
 		allowRepeats = true;
 	}
 	
 	public void setPlayerList(String input) {
-		playerMap.addPlayers(InputParser.createPlayerList(input));
+		playerList = InputParser.createPlayerList(input);
 	}
 	
 	public void setAllowedDLC(DLC[] dlc) {
@@ -32,6 +32,6 @@ public class Core {
 	}
 	
 	public void randomizeCivs() {
-		CivRandomizer.randomizeCivs(playerMap, civMap, allowRepeats);
+		CivRandomizer.randomizeCivs(playerList, civMap, allowRepeats);
 	}
 }
