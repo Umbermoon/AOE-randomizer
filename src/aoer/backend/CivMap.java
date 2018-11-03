@@ -45,7 +45,6 @@ public class CivMap {
 	
 	public boolean isCivEnabled(Civs c) {
 		Boolean b = cMap.get(c);
-		System.out.println("Checking to see if " + c.getName() + " exists in map. " + cMap.get(c));
 		if(b == null || !b)
 			return false;
 		else
@@ -53,8 +52,10 @@ public class CivMap {
 	}
 	
 	public Civs[] getEnabledCivs() {
-		Civs[] cList = (Civs[]) cMap.keySet().toArray();  //get all civs in the mop
-		Civs[] cArray = new Civs[cList.length];
+		Set<Civs> cSet = cMap.keySet();
+		Civs[] cList = new Civs[cSet.size()];
+		cSet.toArray(cList);
+		Civs[] cArray = new Civs[cSet.size()];
 		int enabledCount = 0;
 		for(int i = 0; i < cList.length; i++) {         //move all enabled civs to a different array
 			if(cMap.get(cList[i])) {

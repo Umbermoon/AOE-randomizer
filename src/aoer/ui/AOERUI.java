@@ -102,7 +102,7 @@ public class AOERUI extends JFrame{
 		buttonPanel.setLayout(new GridLayout(3,1,0,10));
 		
 		leftPanel.add(dlcMenuPanel, BorderLayout.CENTER);
-		banButton = new JButton("Ban\nCivs");
+		banButton = new JButton("Ban Civs");
 		banButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -114,8 +114,22 @@ public class AOERUI extends JFrame{
 		banButton.setEnabled(false);
 		buttonPanel.add(banButton);
 		
-		randomizeButton = new JButton("Randomize\nCivs");
-		randomizeButton.setEnabled(false);
+		randomizeButton = new JButton("Randomize Civs");
+		randomizeButton.setEnabled(true);
+		randomizeButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				control.randomizeCivs();
+				Player[] pList = control.getPlayerList();
+				String output = "";
+				for(Player p : pList) {
+					output += p.getName() + ": " + p.getAssignedCiv().getName() + "\n";
+				}
+				outputArea.setText(output);
+			}
+			
+		});
 		buttonPanel.add(randomizeButton);
 		
 		repeatBox = new JCheckBox("Allow Repeats");
@@ -124,8 +138,7 @@ public class AOERUI extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				
+				control.allowRepeats(repeatBox.isSelected());
 			}
 			
 		});
@@ -254,9 +267,22 @@ public class AOERUI extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JCheckBox cb = (JCheckBox)e.getSource();
-				String output = (cb.isSelected()) ? "Enabled " : "Disabled ";
+				String output = (cb.isSelected()) ? "Enabled " : "Disabled ";  //debug info
 				output += cb.getText();
 				System.out.println(output);
+				int index = 0;
+				for(int i = 0; i < civBoxes.length; i++) {
+					if(cb.equals(civBoxes[i])) {
+						index = i;
+						break;
+					}
+				}
+				if(cb.isSelected()) {
+					control.unbanCiv(allowedCivs[index]);
+				}
+				else {
+					control.banCiv(allowedCivs[index]);
+				}
 			}
 			
 		};

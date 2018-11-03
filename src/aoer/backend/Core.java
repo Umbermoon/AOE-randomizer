@@ -58,6 +58,10 @@ public class Core {
 		return civMap;
 	}
 	
+	public Player[] getPlayerList() {
+		return playerList;
+	}
+	
 	public void banCiv(Civs c) {
 		civMap.disableCiv(c);
 	}
