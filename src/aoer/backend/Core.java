@@ -12,7 +12,7 @@ public class Core {
 	
 	public Core() {
 		civMap = new CivMap();
-		setAllowedDLC(DLC.getAllDLC());
+		setAllowedDLC(new DLC[] {DLC.BASE});
 		playerList = null;
 		allowRepeats = true;
 	}
@@ -49,5 +49,14 @@ public class Core {
 	
 	public CivMap getCivMap() {
 		return civMap;
+	}
+	
+	public boolean hasAllowedDLC(DLC dlc) {
+		for(int i = 0; i < allowedDLC.length; i++) {
+			if(allowedDLC[i].equals(dlc)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
