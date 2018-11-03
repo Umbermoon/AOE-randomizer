@@ -39,6 +39,7 @@ public class CivMap {
 	public void setCivs(Civs[] civList) {
 		cMap.clear();
 		for(Civs civ : civList) {
+			System.out.println("Setting " + civ.getName());
 			cMap.put(civ, Boolean.TRUE);
 		}
 	}
