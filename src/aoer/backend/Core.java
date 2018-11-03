@@ -23,23 +23,11 @@ public class Core {
 	
 	public void setAllowedDLC(DLC[] dlc) {
 		allowedDLC = Arrays.copyOf(dlc, dlc.length);
-		String test = "Allowed DLC: ";
-		for(int i = 0; i < allowedDLC.length-1; i++) {
-			test += allowedDLC[i].getName() + ", ";
-		}
-		test += allowedDLC[allowedDLC.length-1].getName();
-		System.out.println(test);
 		setAllowedCivs(Civs.getCivsFromDLC(allowedDLC));
 	}
 	
 	public void setAllowedCivs(Civs[] civs) {
 		allowedCivs = Arrays.copyOf(civs, civs.length);
-		String test = "Allowed Civs: ";
-		for(int i = 0; i < allowedCivs.length-1; i++) {
-			test += allowedCivs[i].getName() + "\n";
-		}
-		test += allowedCivs[allowedCivs.length-1].getName();
-		System.out.println(test);
 		civMap.setCivs(civs);
 	}
 	
