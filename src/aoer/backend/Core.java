@@ -21,6 +21,13 @@ public class Core {
 		playerList = InputParser.createPlayerList(input);
 	}
 	
+	public void setPlayerList(String[] names) {
+		playerList = new Player[names.length];
+		for(int i = 0; i < playerList.length; i++) {
+			playerList[i] = new Player(names[i]);
+		}
+	}
+	
 	public void setAllowedDLC(DLC[] dlc) {
 		allowedDLC = Arrays.copyOf(dlc, dlc.length);
 		setAllowedCivs(Civs.getCivsFromDLC(allowedDLC));
@@ -51,6 +58,14 @@ public class Core {
 		return civMap;
 	}
 	
+	public void banCiv(Civs c) {
+		civMap.disableCiv(c);
+	}
+	
+	public void unbanCiv(Civs c) {
+		civMap.enableCiv(c);
+	}
+	
 	public boolean hasAllowedDLC(DLC dlc) {
 		for(int i = 0; i < allowedDLC.length; i++) {
 			if(allowedDLC[i].equals(dlc)) {
@@ -58,5 +73,9 @@ public class Core {
 			}
 		}
 		return false;
+	}
+	
+	public boolean hasAllowedCiv(Civs civ) {
+		return civMap.isCivEnabled(civ);
 	}
 }
