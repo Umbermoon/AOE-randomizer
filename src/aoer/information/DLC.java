@@ -4,7 +4,8 @@ public enum DLC {
 	BASE("Base Game", 18),
 	FORGOTTEN("The Forgotten", 5),
 	AFRICANS("The African Kingdoms", 4),
-	RAJAS("Rise of the Rajas", 4);
+	RAJAS("Rise of the Rajas", 4),
+	DEFINITIVE("Definitive Edition", 4);
 	
 	private final String name;
 	private final int civCount;

@@ -14,7 +14,7 @@ public class AOERUI extends JFrame{
 	
 	JPanel mainPanel, leftPanel, dlcMenuPanel, buttonPanel;
 	JButton banButton, randomizeButton;
-	JCheckBox repeatBox, baseGameBox, forgottenBox, africanBox, rajaBox;
+	JCheckBox repeatBox, baseGameBox, forgottenBox, africanBox, rajaBox, definitiveBox;
 	JCheckBox[] dlcBoxList;
 	JTextArea outputArea;
 	
@@ -37,7 +37,7 @@ public class AOERUI extends JFrame{
 		dlcMenuPanel = new JPanel();
 		dlcMenuPanel.setLayout(new GridLayout(4,1,0,10));
 		
-		dlcBoxList = new JCheckBox[4];
+		dlcBoxList = new JCheckBox[DLC.values().length];
 		
 		baseGameBox = new JCheckBox("Base Game");
 		baseGameBox.setSelected(control.hasAllowedDLC(DLC.BASE));
@@ -55,11 +55,15 @@ public class AOERUI extends JFrame{
 		rajaBox.setSelected(control.hasAllowedDLC(DLC.RAJAS));
 		dlcBoxList[3] = rajaBox;
 		
+		definitiveBox = new JCheckBox("Definitive Ed. Civs");
+		definitiveBox.setSelected(control.hasAllowedDLC(DLC.DEFINITIVE));
+		dlcBoxList[4] = definitiveBox;
+		
 		ActionListener dlcCheckBoxListener = new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				DLC[] enabledDLC = new DLC[4];
+				DLC[] enabledDLC = new DLC[DLC.values().length];
 				int numEnabled = 0;
 				if(dlcBoxList[0].isSelected()) {
 					enabledDLC[0] = DLC.BASE;
@@ -75,6 +79,10 @@ public class AOERUI extends JFrame{
 				}
 				if(dlcBoxList[3].isSelected()) {
 					enabledDLC[3] = DLC.RAJAS;
+					numEnabled++;
+				}
+				if(dlcBoxList[4].isSelected()) {
+					enabledDLC[4] = DLC.DEFINITIVE;
 					numEnabled++;
 				}
 				

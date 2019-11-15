@@ -31,7 +31,11 @@ public enum Civs {
 	BURMA("Burmese", DLC.RAJAS),
 	KHMER("Khmer", DLC.RAJAS),
 	MALAY("Malay", DLC.RAJAS),
-	VIETNAM("Vietnam", DLC.RAJAS);
+	VIETNAM("Vietnam", DLC.RAJAS),
+	BULGARIANS("Bulagrians", DLC.DEFINITIVE),
+	LITUANIANS("Lithuanians", DLC.DEFINITIVE),
+	CUMANS("Cumans", DLC.DEFINITIVE),
+	TATARS("Tatars", DLC.DEFINITIVE);
 	
 	private final String name;
 	private final DLC dlc;
