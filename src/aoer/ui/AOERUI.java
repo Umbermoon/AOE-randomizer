@@ -14,7 +14,7 @@ public class AOERUI extends JFrame{
 	
 	JPanel mainPanel, leftPanel, dlcMenuPanel, buttonPanel;
 	JButton banButton, randomizeButton;
-	JCheckBox repeatBox, baseGameBox, forgottenBox, africanBox, rajaBox, definitiveBox;
+	JCheckBox repeatBox, baseGameBox, forgottenBox, africanBox, rajaBox, definitiveBox, westernBox;
 	JCheckBox[] dlcBoxList;
 	JTextArea outputArea;
 	
@@ -59,6 +59,10 @@ public class AOERUI extends JFrame{
 		definitiveBox.setSelected(control.hasAllowedDLC(DLC.DEFINITIVE));
 		dlcBoxList[4] = definitiveBox;
 		
+		westernBox = new JCheckBox("Lords of the West");
+		westernBox.setSelected(control.hasAllowedDLC(DLC.WESTERNLORDS));
+		dlcBoxList[5] = westernBox;
+		
 		ActionListener dlcCheckBoxListener = new ActionListener() {
 
 			@Override
@@ -83,6 +87,10 @@ public class AOERUI extends JFrame{
 				}
 				if(dlcBoxList[4].isSelected()) {
 					enabledDLC[4] = DLC.DEFINITIVE;
+					numEnabled++;
+				}
+				if(dlcBoxList[5].isSelected()) {
+					enabledDLC[5] = DLC.WESTERNLORDS;
 					numEnabled++;
 				}
 				
@@ -157,6 +165,7 @@ public class AOERUI extends JFrame{
 		
 		outputArea = new JTextArea();
 		outputArea.setEditable(false);
+		outputArea.setFont(outputArea.getFont().deriveFont(22f));
 		
 		mainPanel.add(outputArea, BorderLayout.CENTER);
 		

@@ -35,7 +35,9 @@ public enum Civs {
 	BULGARIANS("Bulagrians", DLC.DEFINITIVE),
 	LITUANIANS("Lithuanians", DLC.DEFINITIVE),
 	CUMANS("Cumans", DLC.DEFINITIVE),
-	TATARS("Tatars", DLC.DEFINITIVE);
+	TATARS("Tatars", DLC.DEFINITIVE),
+	BURGUNDIANS("Burgundians", DLC.WESTERNLORDS),
+	SICILIANS("Sicilians", DLC.WESTERNLORDS);
 	
 	private final String name;
 	private final DLC dlc;
